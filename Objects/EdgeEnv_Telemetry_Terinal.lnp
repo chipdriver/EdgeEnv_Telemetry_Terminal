@@ -11,6 +11,8 @@
 ".\objects\stm32f4xx_spi.o"
 ".\objects\stm32f4xx_tim.o"
 ".\objects\stm32f4xx_usart.o"
+".\objects\dht11_gpio_1.o"
+".\objects\dht11_gpio_1.o"
 ".\objects\stm32f4xx_it.o"
 ".\objects\main.o"
 --strict --scatter ".\Objects\EdgeEnv_Telemetry_Terinal.sct"

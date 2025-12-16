@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER, STM32F411xE</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc;.\Lib\Libraries\CMSIS\Include;.\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include;.\User;.\User\App\Inc</IncludePath>
+              <IncludePath>.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc;.\Lib\Libraries\CMSIS\Include;.\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include;.\User;.\User\App\Inc;.\User\BSP\Inc;.\User\Drivers\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -457,9 +457,23 @@
         </Group>
         <Group>
           <GroupName>User_BSP</GroupName>
+          <Files>
+            <File>
+              <FileName>dht11_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\BSP\Src\dht11_gpio.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>User_Drivers</GroupName>
+          <Files>
+            <File>
+              <FileName>dht11_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\BSP\Src\dht11_gpio.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>User_Services</GroupName>

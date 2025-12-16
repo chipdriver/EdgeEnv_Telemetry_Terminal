@@ -22,12 +22,14 @@ Dialog DLL:      TCM.DLL V1.48.0.0
  
 <h2>Project:</h2>
 C:\SMT32Project\EdgeEnv_Telemetry_Terminal\EdgeEnv_Telemetry_Terinal.uvprojx
-Project File Date:  12/10/2025
+Project File Date:  12/16/2025
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling main.c...
+Note: source file '.\User\BSP\Src\dht11_gpio.c' - object file renamed from '.\Objects\dht11_gpio.o' to '.\Objects\dht11_gpio_1.o'.
+Note: source file '.\User\BSP\Src\dht11_gpio.c' - object file renamed from '.\Objects\dht11_gpio.o' to '.\Objects\dht11_gpio_1.o'.
+compiling dht11_gpio.c...
 .\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h(11581): warning:  #47-D: incompatible redefinition of macro "DBGMCU_APB2_FZ_DBG_TIM1_STOP"  (declared at line 11574)
   #define  DBGMCU_APB2_FZ_DBG_TIM1_STOP        DBGMCU_APB1_FZ_DBG_TIM1_STOP    
 .\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h(11582): warning:  #47-D: incompatible redefinition of macro "DBGMCU_APB2_FZ_DBG_TIM8_STOP"  (declared at line 11575)
@@ -38,10 +40,12 @@ compiling main.c...
   #define  DBGMCU_APB2_FZ_DBG_TIM10_STOP       DBGMCU_APB1_FZ_DBG_TIM10_STOP
 .\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h(11585): warning:  #47-D: incompatible redefinition of macro "DBGMCU_APB2_FZ_DBG_TIM11_STOP"  (declared at line 11578)
   #define  DBGMCU_APB2_FZ_DBG_TIM11_STOP       DBGMCU_APB1_FZ_DBG_TIM11_STOP
-User\App\Src\main.c: 5 warnings, 0 errors
+User\BSP\Src\dht11_gpio.c: 5 warnings, 0 errors
 linking...
+.\Objects\EdgeEnv_Telemetry_Terinal.axf: Warning: L6304W: Duplicate input file .\objects\dht11_gpio_1.o ignored.
 Program Size: Code=660 RO-data=424 RW-data=0 ZI-data=1632  
-".\Objects\EdgeEnv_Telemetry_Terinal.axf" - 0 Error(s), 5 Warning(s).
+Finished: 0 information, 1 warning and 0 error messages.
+".\Objects\EdgeEnv_Telemetry_Terinal.axf" - 0 Error(s), 6 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -53,7 +57,7 @@ Package Vendor: Keil
 <h2>Collection of Component include folders:</h2>
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>
