@@ -15,7 +15,7 @@ void DHT11_SetPinOutput(void)
     GPIO_Init(DHT11_GPIO_PORT, &GPIO_InitStruct);
 
     //2.设置引脚输出高电平
-    GPIO_SetBits(DHT11_GPIO_PORT, DHT11_GPIO_PIN);//（开漏下写1=放开，让上拉拉高）
+    GPIO_SetBits(DHT11_GPIO_PORT, DHT11_GPIO_PIN);//（开漏下写1=放开，让外部上拉拉高）
 
 }
 
@@ -175,18 +175,22 @@ static bool DHT11_ReadBit(void)
 bool DHT11_Read(int *humidity, int *temperature)
 {
     uint8_t data[5] = { 0 }; //存储接收到的5字节数据
+    int j = 0, i = 0;
+    uint8_t checksum = 0;
+    
+    if (humidity == NULL || temperature == NULL) return false;
 
     // ========== 第1步：主机发送开始信号 ==========
     DHT11_Start();
 
     // ========== 第2步：等待DHT11响应 ============
-    DHT11_CheckResponse();
+    if( DHT11_CheckResponse() != 0) return false;
 
     // ========== 第3步：读取40位数据 =============
     // DHT11发送5字节数据，每字节8位，共40位
-    for(int i = 0; i < 5; i++)
+    for(i = 0; i < 5; i++)
     {
-        for(int j = 7 ; j > =0; j--)
+        for(j = 7; j >= 0; j--)
         {
             //读取每一位数据，并存储到对应字节的对应位
             if(DHT11_ReadBit())
@@ -198,7 +202,7 @@ bool DHT11_Read(int *humidity, int *temperature)
     }
 
     // ========== 第4步：数据校验 =================
-    uint8_t checksum = data[0] + data[1] + data[2] + data[3];
+    checksum = data[0] + data[1] + data[2] + data[3];
     if(checksum != data[4])
     {
         return false; //校验失败，返回错误
@@ -209,4 +213,16 @@ bool DHT11_Read(int *humidity, int *temperature)
     *temperature = data[2];
 
     return true; //成功
+}
+
+/**
+ * @brief DHT11初始化
+ */
+void DHT11_Init(void)
+{
+    //1.初始化DHT11所用的GPIO
+    DHT11_GPIO_Init();
+
+    //2.初始化DWT延时函数
+    DWT_Delay_Init();
 }

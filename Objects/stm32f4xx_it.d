@@ -30,3 +30,7 @@
 .\objects\stm32f4xx_it.o: .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
 .\objects\stm32f4xx_it.o: .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h
 .\objects\stm32f4xx_it.o: .\User\App\Inc\main.h
+.\objects\stm32f4xx_it.o: .\User\Drivers\Inc\dht11_Drivers.h
+.\objects\stm32f4xx_it.o: .\User\BSP\Inc\dht11_gpio.h
+.\objects\stm32f4xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\stm32f4xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

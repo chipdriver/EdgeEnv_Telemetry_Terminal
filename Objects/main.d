@@ -29,3 +29,7 @@
 .\objects\main.o: .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h
 .\objects\main.o: .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
 .\objects\main.o: .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h
+.\objects\main.o: .\User\Drivers\Inc\dht11_Drivers.h
+.\objects\main.o: .\User\BSP\Inc\dht11_gpio.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

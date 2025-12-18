@@ -134,11 +134,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>-1</DriverSelection>
+            <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -463,15 +463,30 @@
               <FileType>1</FileType>
               <FilePath>.\User\BSP\Src\dht11_gpio.c</FilePath>
             </File>
+            <File>
+              <FileName>tft_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\BSP\Src\tft_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\BSP\Src\i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\BSP\Src\spi.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>User_Drivers</GroupName>
           <Files>
             <File>
-              <FileName>dht11_gpio.c</FileName>
+              <FileName>dht11_Drivers.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\User\BSP\Src\dht11_gpio.c</FilePath>
+              <FilePath>.\User\Drivers\Src\dht11_Drivers.c</FilePath>
             </File>
           </Files>
         </Group>

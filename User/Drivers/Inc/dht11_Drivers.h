@@ -4,7 +4,8 @@
  *          包含头文件
  *******************************************/
 #include "dht11_gpio.h"
-
+#include <stdbool.h>
+#include <stddef.h>
 /***********************************
  *          宏定义
  **********************************/
@@ -15,9 +16,7 @@
 /***********************************
  *       函数声明
  **********************************/
-void DHT11_SetPinOutput(void);
-void DHT11_SetPinInput(void);
-
-
+void DHT11_Init(void);
+bool DHT11_Read(int *humidity, int *temperature);
 
 #endif /* __DHT11_DRIVERS_H */
