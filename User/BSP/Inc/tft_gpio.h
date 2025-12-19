@@ -43,4 +43,8 @@
 
 #define TP_INT_READ()      GPIO_ReadInputDataBit(TP_INT_GPIO_PORT,TP_INT_GPIO_PIN) //读取INT状态
 
+/****************************************
+ *              函数声明
+ ****************************************/
+void TFT_GPIO_Init(void);
 #endif /*__TFT_GPIO_H__*/

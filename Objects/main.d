@@ -33,3 +33,4 @@
 .\objects\main.o: .\User\BSP\Inc\dht11_gpio.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\main.o: .\User\BSP\Inc\dwt_delay.h

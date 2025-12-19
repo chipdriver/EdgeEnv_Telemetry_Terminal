@@ -48,3 +48,31 @@ void SPI1_Init_Master(void)
     //使能SPI
     SPI_Cmd(SPIx, ENABLE);
 }
+
+/**
+ * @brief SPI发送一个字节
+ */
+void SPI_SendByte(uint8_t data)
+{
+    //等待发送缓冲区空
+    while(SPI_I2S_GetFlagStatus(SPIx,SPI_I2S_FLAG_TXE) == RESET);
+
+    //发送一个字节
+    SPI_I2S_SendData(SPIx, data);
+
+    //等待总线不忙（确保发送完成）
+    while(SPI_I2S_GetFlagStatus(SPIx,SPI_I2S_FLAG_BSY) == SET);
+}
+
+
+/**
+ * @brief 发送一段数据
+ */
+void SPI_SendBuffer(const uint8_t* buf, uint16_t len)
+{
+    while(len--)
+    {
+        SPI_SendByte(*buf++);
+    }
+}
+

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\EdgeEnv_Telemetry_Terinal.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\EdgeEnv_Telemetry_Terinal.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Dec 18 16:43:12 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Dec 19 11:24:46 2025
 <BR><P>
 <H3>Maximum Stack Usage =         92 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -99,8 +99,8 @@ Function Pointers
 Global Symbols
 </H3>
 <P><STRONG><a name="[47]"></a>__main</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, __main.o(!!!main))
-<BR><BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
-<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
+<BR><BR>[Calls]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
 </UL>
 
 <P><STRONG><a name="[48]"></a>__scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter))
@@ -192,8 +192,8 @@ Global Symbols
 <P><STRONG><a name="[8b]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000E))
 
 <P><STRONG><a name="[49]"></a>__rt_entry</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry.o(.ARM.Collect$$rtentry$$00000000))
-<BR><BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
-<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
+<BR><BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
 </UL>
 
 <P><STRONG><a name="[8c]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
@@ -215,8 +215,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 92 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; DHT11_Read &rArr; DHT11_Start &rArr; DHT11_SetPinOutput &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
+<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
+<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[8e]"></a>__rt_entry_postli_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000C))
@@ -469,7 +469,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DWT_Delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read
+<BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read
 </UL>
 
 <P><STRONG><a name="[5f]"></a>DHT11_GPIO_Init</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, dht11_gpio_1.o(i.DHT11_GPIO_Init))
@@ -482,71 +482,70 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Init
 </UL>
 
-<P><STRONG><a name="[63]"></a>DHT11_Init</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, dht11_drivers.o(i.DHT11_Init))
+<P><STRONG><a name="[63]"></a>DHT11_Init</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, dht11_drivers.o(i.DHT11_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = DHT11_Init &rArr; DHT11_GPIO_Init &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DWT_Delay_Init
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_GPIO_Init
+<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[65]"></a>DHT11_Read</STRONG> (Thumb, 140 bytes, Stack size 32 bytes, dht11_drivers.o(i.DHT11_Read))
+<P><STRONG><a name="[64]"></a>DHT11_Read</STRONG> (Thumb, 140 bytes, Stack size 32 bytes, dht11_drivers.o(i.DHT11_Read))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = DHT11_Read &rArr; DHT11_Start &rArr; DHT11_SetPinOutput &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Start
+<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Start
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_CheckResponse
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_ReadBit
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_ReadBit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[68]"></a>DHT11_SetPinInput</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, dht11_drivers.o(i.DHT11_SetPinInput))
+<P><STRONG><a name="[67]"></a>DHT11_SetPinInput</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, dht11_drivers.o(i.DHT11_SetPinInput))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = DHT11_SetPinInput &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Start
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Start
 </UL>
 
-<P><STRONG><a name="[69]"></a>DHT11_SetPinOutput</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, dht11_drivers.o(i.DHT11_SetPinOutput))
+<P><STRONG><a name="[68]"></a>DHT11_SetPinOutput</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, dht11_drivers.o(i.DHT11_SetPinOutput))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = DHT11_SetPinOutput &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Start
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Start
 </UL>
 
-<P><STRONG><a name="[66]"></a>DHT11_Start</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, dht11_drivers.o(i.DHT11_Start))
+<P><STRONG><a name="[65]"></a>DHT11_Start</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, dht11_drivers.o(i.DHT11_Start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = DHT11_Start &rArr; DHT11_SetPinOutput &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_SetPinOutput
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_SetPinInput
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DWT_Delay_us
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DWT_Delay_ms
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_SetPinOutput
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_SetPinInput
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DWT_Delay_ms
 </UL>
-<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read
+<BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read
 </UL>
 
-<P><STRONG><a name="[64]"></a>DWT_Delay_Init</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, dht11_drivers.o(i.DWT_Delay_Init))
-<BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Init
+<P><STRONG><a name="[6c]"></a>DWT_Delay_Init</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, dwt_delay.o(i.DWT_Delay_Init))
+<BR><BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6b]"></a>DWT_Delay_ms</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, dht11_drivers.o(i.DWT_Delay_ms))
+<P><STRONG><a name="[6a]"></a>DWT_Delay_ms</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, dwt_delay.o(i.DWT_Delay_ms))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = DWT_Delay_ms
 </UL>
-<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Start
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Start
 </UL>
 
-<P><STRONG><a name="[5d]"></a>DWT_Delay_us</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, dht11_drivers.o(i.DWT_Delay_us))
+<P><STRONG><a name="[5d]"></a>DWT_Delay_us</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, dwt_delay.o(i.DWT_Delay_us))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = DWT_Delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Start
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Start
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_CheckResponse
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_ReadBit
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_ReadBit
 </UL>
 
 <P><STRONG><a name="[9]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.DebugMon_Handler))
@@ -555,23 +554,23 @@ Global Symbols
 <P><STRONG><a name="[61]"></a>GPIO_Init</STRONG> (Thumb, 144 bytes, Stack size 20 bytes, stm32f4xx_gpio.o(i.GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_SetPinOutput
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_SetPinInput
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_SetPinOutput
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_SetPinInput
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_GPIO_Init
 </UL>
 
 <P><STRONG><a name="[5e]"></a>GPIO_ReadInputDataBit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_ReadInputDataBit))
 <BR><BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_CheckResponse
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_ReadBit
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_ReadBit
 </UL>
 
-<P><STRONG><a name="[6a]"></a>GPIO_ResetBits</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_ResetBits))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Start
+<P><STRONG><a name="[69]"></a>GPIO_ResetBits</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_ResetBits))
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Start
 </UL>
 
 <P><STRONG><a name="[62]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_SetBits))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Start
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_SetPinOutput
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Start
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_SetPinOutput
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_GPIO_Init
 </UL>
 
@@ -600,7 +599,7 @@ Global Symbols
 <P><STRONG><a name="[45]"></a>SystemInit</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, system_stm32f4xx.o(i.SystemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SystemInit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 <BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -609,12 +608,13 @@ Global Symbols
 <P><STRONG><a name="[7]"></a>UsageFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.UsageFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f411xe.o(RESET)
 </UL>
-<P><STRONG><a name="[53]"></a>main</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, main.o(i.main))
+<P><STRONG><a name="[53]"></a>main</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = main &rArr; DHT11_Read &rArr; DHT11_Start &rArr; DHT11_SetPinOutput &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Init
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DWT_Delay_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
@@ -630,17 +630,17 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[6c]"></a>SetSysClock</STRONG> (Thumb, 172 bytes, Stack size 0 bytes, system_stm32f4xx.o(i.SetSysClock))
+<P><STRONG><a name="[6b]"></a>SetSysClock</STRONG> (Thumb, 172 bytes, Stack size 0 bytes, system_stm32f4xx.o(i.SetSysClock))
 <BR><BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[67]"></a>DHT11_ReadBit</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, dht11_drivers.o(i.DHT11_ReadBit))
+<P><STRONG><a name="[66]"></a>DHT11_ReadBit</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, dht11_drivers.o(i.DHT11_ReadBit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = DHT11_ReadBit &rArr; DWT_Delay_us
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DWT_Delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read
+<BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read
 </UL>
 <P>
 <H3>

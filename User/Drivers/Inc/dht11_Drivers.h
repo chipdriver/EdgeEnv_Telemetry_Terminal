@@ -6,6 +6,7 @@
 #include "dht11_gpio.h"
 #include <stdbool.h>
 #include <stddef.h>
+#include "dwt_delay.h"
 /***********************************
  *          宏定义
  **********************************/

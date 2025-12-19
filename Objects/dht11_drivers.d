@@ -32,3 +32,4 @@
 .\objects\dht11_drivers.o: .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h
 .\objects\dht11_drivers.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\dht11_drivers.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\dht11_drivers.o: .\User\BSP\Inc\dwt_delay.h

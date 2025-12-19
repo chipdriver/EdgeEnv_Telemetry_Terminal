@@ -478,6 +478,11 @@
               <FileType>1</FileType>
               <FilePath>.\User\BSP\Src\spi.c</FilePath>
             </File>
+            <File>
+              <FileName>dwt_delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\BSP\Src\dwt_delay.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -487,6 +492,11 @@
               <FileName>dht11_Drivers.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\User\Drivers\Src\dht11_Drivers.c</FilePath>
+            </File>
+            <File>
+              <FileName>st7789.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\Drivers\Src\st7789.c</FilePath>
             </File>
           </Files>
         </Group>
