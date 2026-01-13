@@ -16,11 +16,14 @@
 ".\objects\i2c.o"
 ".\objects\spi.o"
 ".\objects\dwt_delay.o"
+".\objects\uart.o"
 ".\objects\dht11_drivers.o"
 ".\objects\st7789.o"
+".\objects\font.o"
+".\objects\st6336.o"
 ".\objects\stm32f4xx_it.o"
 ".\objects\main.o"
---strict --scatter ".\Objects\EdgeEnv_Telemetry_Terinal.sct"
+--library_type=microlib --strict --scatter ".\Objects\EdgeEnv_Telemetry_Terinal.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\EdgeEnv_Telemetry_Terinal.map" -o .\Objects\EdgeEnv_Telemetry_Terinal.axf

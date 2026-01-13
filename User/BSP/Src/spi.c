@@ -13,9 +13,9 @@ void SPI1_Init_Master(void)
     RCC_APB2PeriphClockCmd(SPIx_CLK, ENABLE);
 
     //2.GPIO 配置：PA5/6/7 复用 AF5
-    GPIO_PinAFConfig(SPIx_GPIO, SPIx_SCK_PIN, SPIx_AF);
-    GPIO_PinAFConfig(SPIx_GPIO, SPIx_MISO_PIN, SPIx_AF);
-    GPIO_PinAFConfig(SPIx_GPIO, SPIx_MOSI_PIN, SPIx_AF);
+    GPIO_PinAFConfig(SPIx_GPIO, GPIO_PinSource5, SPIx_AF);
+    GPIO_PinAFConfig(SPIx_GPIO, GPIO_PinSource6, SPIx_AF);
+    GPIO_PinAFConfig(SPIx_GPIO, GPIO_PinSource7, SPIx_AF);
 
     GPIO_InitStruct.GPIO_Pin = SPIx_SCK_PIN | SPIx_MISO_PIN | SPIx_MOSI_PIN;
     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF;

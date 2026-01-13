@@ -34,3 +34,12 @@
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\main.o: .\User\BSP\Inc\dwt_delay.h
+.\objects\main.o: .\User\Drivers\Inc\st7789.h
+.\objects\main.o: .\User\BSP\Inc\spi.h
+.\objects\main.o: .\User\BSP\Inc\tft_gpio.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: .\User\Drivers\Inc\font.h
+.\objects\main.o: .\User\BSP\Inc\uart.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: .\User\BSP\Inc\i2c.h
+.\objects\main.o: .\User\Drivers\Inc\ST6336.h

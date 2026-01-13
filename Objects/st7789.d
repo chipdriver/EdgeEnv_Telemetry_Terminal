@@ -32,3 +32,5 @@
 .\objects\st7789.o: .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
 .\objects\st7789.o: .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h
 .\objects\st7789.o: .\User\BSP\Inc\dwt_delay.h
+.\objects\st7789.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\st7789.o: .\User\Drivers\Inc\font.h

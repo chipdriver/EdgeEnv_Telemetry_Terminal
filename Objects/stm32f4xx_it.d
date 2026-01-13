@@ -35,3 +35,12 @@
 .\objects\stm32f4xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\stm32f4xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\stm32f4xx_it.o: .\User\BSP\Inc\dwt_delay.h
+.\objects\stm32f4xx_it.o: .\User\Drivers\Inc\st7789.h
+.\objects\stm32f4xx_it.o: .\User\BSP\Inc\spi.h
+.\objects\stm32f4xx_it.o: .\User\BSP\Inc\tft_gpio.h
+.\objects\stm32f4xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\stm32f4xx_it.o: .\User\Drivers\Inc\font.h
+.\objects\stm32f4xx_it.o: .\User\BSP\Inc\uart.h
+.\objects\stm32f4xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\stm32f4xx_it.o: .\User\BSP\Inc\i2c.h
+.\objects\stm32f4xx_it.o: .\User\Drivers\Inc\ST6336.h

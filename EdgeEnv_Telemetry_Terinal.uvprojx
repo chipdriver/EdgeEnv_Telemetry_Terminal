@@ -189,7 +189,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>0</useUlib>
+            <useUlib>1</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -325,7 +325,7 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>3</v6Lang>
@@ -483,6 +483,11 @@
               <FileType>1</FileType>
               <FilePath>.\User\BSP\Src\dwt_delay.c</FilePath>
             </File>
+            <File>
+              <FileName>uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\BSP\Src\uart.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -497,6 +502,16 @@
               <FileName>st7789.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\User\Drivers\Src\st7789.c</FilePath>
+            </File>
+            <File>
+              <FileName>font.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\Drivers\Src\font.c</FilePath>
+            </File>
+            <File>
+              <FileName>ST6336.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\Drivers\Src\ST6336.c</FilePath>
             </File>
           </Files>
         </Group>
