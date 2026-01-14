@@ -6,6 +6,7 @@ int main(void)
 {
 	int humidity = 0;
 	int temperature = 0;
+	FT6336_Touch_t t;							//第1个触摸点
 	SystemInit();									//初始化系统
 	DWT_Delay_Init();							//初始化DWT延时函数
 	DHT11_Init();									//初始化DHT11
@@ -18,33 +19,18 @@ int main(void)
 	I2C1_Init_ForTouch();					//I2C1初始化
 	FT6336_Reset();
 
+	
 	while(1)
 	{
 		/*DHT11_Read(&humidity, &temperature); //读取DHT11数据*/
-		uint8_t td = FT6336_ReadReg(0x02);
-    	printf("TD = %d\r\n", td);
-
-		if(td)
-		{
-			uint8_t buf[6];
-			FT6336_ReadMulti(0x03, buf, 6);
-
-			printf("RAW: %02X %02X %02X %02X %02X %02X\r\n",
-				buf[0], buf[1], buf[2], buf[3], buf[4], buf[5]);
-		}
-
-		DWT_Delay_ms(200);
-		
-		// uint8_t td = FT6336_ReadReg(0x02);
-		// DWT_Delay_ms(5);
-		// if(td)
+		// if(FT6336_ReadTouch(&t))
 		// {
-		// 		uint8_t buf[6];
-		// 		FT6336_ReadMulti(0x03, buf, 6);
-
-		// 		printf("RAW: %02X %02X %02X %02X %02X %02X\r\n",
-		// 					buf[0], buf[1], buf[2], buf[3], buf[4], buf[5]);
+		// 	printf("x = %u y = %u points = %u\r\n",t.x,t.y,t.points);
 		// }
+
+		// DWT_Delay_ms(20);
+		uint8_t td = FT6336_ReadReg(0x02);
+		printf("TD_STATUS = %d\r\n", td);
 	}
 }
 	

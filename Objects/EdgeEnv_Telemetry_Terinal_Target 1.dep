@@ -578,8 +578,8 @@ I (.\User\Drivers\Inc\font.h)(0x695F596C)
 F (.\User\Drivers\Src\font.c)(0x695F5A3A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Lib\Libraries\CMSIS\Include -I .\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\User -I .\User\App\Inc -I .\User\BSP\Inc -I .\User\Drivers\Inc-D__UVISION_VERSION="534" -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DSTM32F411xE-o .\objects\font.o --omf_browse .\objects\font.crf --depend .\objects\font.d)
 I (.\User\Drivers\Inc\font.h)(0x695F596C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
-F (.\User\Drivers\Src\ST6336.c)(0x6965F71E)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Lib\Libraries\CMSIS\Include -I .\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\User -I .\User\App\Inc -I .\User\BSP\Inc -I .\User\Drivers\Inc-D__UVISION_VERSION="534" -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DSTM32F411xE-o .\objects\st6336.o --omf_browse .\objects\st6336.crf --depend .\objects\st6336.d)
-I (.\User\Drivers\Inc\ST6336.h)(0x6965B6E1)
+F (.\User\Drivers\Src\ST6336.c)(0x6966FCE2)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Lib\Libraries\CMSIS\Include -I .\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\User -I .\User\App\Inc -I .\User\BSP\Inc -I .\User\Drivers\Inc-D__UVISION_VERSION="534" -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DSTM32F411xE-o .\objects\st6336.o --omf_browse .\objects\st6336.crf --depend .\objects\st6336.d)
+I (.\User\Drivers\Inc\ST6336.h)(0x6966FD9D)
 I (.\User\BSP\Inc\i2c.h)(0x6964575D)
 I (.\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6938DFF7)
 I (.\Lib\Libraries\CMSIS\Include\core_cm4.h)(0x6938DFFD)
@@ -657,8 +657,8 @@ I (.\User\Drivers\Inc\font.h)(0x695F596C)
 I (.\User\BSP\Inc\uart.h)(0x69644B19)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E3CC2)
 I (.\User\BSP\Inc\i2c.h)(0x6964575D)
-I (.\User\Drivers\Inc\ST6336.h)(0x6965B6E1)
-F (.\User\App\Src\main.c)(0x69660E26)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Lib\Libraries\CMSIS\Include -I .\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\User -I .\User\App\Inc -I .\User\BSP\Inc -I .\User\Drivers\Inc-D__UVISION_VERSION="534" -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DSTM32F411xE-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (.\User\Drivers\Inc\ST6336.h)(0x6966FD9D)
+F (.\User\App\Src\main.c)(0x696732BA)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Lib\Libraries\CMSIS\Include -I .\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\User -I .\User\App\Inc -I .\User\BSP\Inc -I .\User\Drivers\Inc-D__UVISION_VERSION="534" -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DSTM32F411xE-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (.\User\App\Inc\main.h)(0x6964AE82)
 I (.\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6938DFF7)
 I (.\Lib\Libraries\CMSIS\Include\core_cm4.h)(0x6938DFFD)
@@ -701,4 +701,4 @@ I (.\User\Drivers\Inc\font.h)(0x695F596C)
 I (.\User\BSP\Inc\uart.h)(0x69644B19)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E3CC2)
 I (.\User\BSP\Inc\i2c.h)(0x6964575D)
-I (.\User\Drivers\Inc\ST6336.h)(0x6965B6E1)
+I (.\User\Drivers\Inc\ST6336.h)(0x6966FD9D)

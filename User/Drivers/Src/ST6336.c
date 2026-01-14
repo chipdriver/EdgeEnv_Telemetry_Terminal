@@ -198,3 +198,39 @@ void FT6336_ReadMulti(uint8_t reg,uint8_t *buf,uint8_t len)
      */
     I2C_AcknowledgeConfig(I2C1,ENABLE);
 }
+
+/**
+ * @brief 读取FT6336第一个触摸点（点数 + X/Y)
+ * @param t:输出结构体
+ * @return 1=有触摸并成功读取坐标；0=无触摸
+ */
+uint8_t FT6336_ReadTouch(FT6336_Touch_t *t)
+{
+    uint8_t td;
+
+    //参数检查
+    if(t == 0) return 0;
+
+    // 1.读触摸点数寄存器 0x02(TD_STATUS)
+    FT6336_ReadMulti(0x02,&td,1);
+    td &= 0x0F; //低4位：点数
+
+    t->points = td;
+    t->touched = (td > 0) ? 1: 0;
+
+    if(td == 0)
+    {
+        t->x = 0;
+        t->y = 0;
+        return 0;
+    }
+
+    // 2.从0x03连续读6个字节（常用：XH,XL,YH,YL+其他信息）
+    FT6336_ReadMulti(0x03,t->raw,6);
+
+    // 3.解析 X/Y（高4位常是事件/flag，坐标高位在低4位）
+    t->x = ((uint16_t)(t->raw[0] & 0x0F) << 8 ) | t->raw[1];
+    t->y = ((uint16_t)(t->raw[2] & 0x0F) << 8 ) | t->raw[3];
+
+    return 1;
+}
