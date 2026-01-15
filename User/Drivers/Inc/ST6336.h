@@ -6,7 +6,7 @@
  */
 #include "i2c.h"        //I2C
 #include "dwt_delay.h"  //延时函数
-
+#include "st7789.h"
 /**
  * 结构体
  */
@@ -32,4 +32,5 @@ uint8_t FT6336_ReadReg(uint8_t reg);
 void FT6336_Reset(void);                        //复位
 void FT6336_ReadMulti(uint8_t reg,uint8_t *buf,uint8_t len); 
 uint8_t FT6336_ReadTouch(FT6336_Touch_t *t);    //读取FT6336第一个触摸点
+uint8_t FT6336_ReadTouch_Filtered(FT6336_Touch_t *t);  ////读取FT6336第一个触摸点（升级版）
 #endif /*ST6336_H_*/

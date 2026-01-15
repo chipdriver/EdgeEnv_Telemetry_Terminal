@@ -23,14 +23,12 @@ int main(void)
 	while(1)
 	{
 		/*DHT11_Read(&humidity, &temperature); //读取DHT11数据*/
-		// if(FT6336_ReadTouch(&t))
-		// {
-		// 	printf("x = %u y = %u points = %u\r\n",t.x,t.y,t.points);
-		// }
+		if(FT6336_ReadTouch_Filtered(&t))
+		{
+			printf("x = %u y = %u points = %u\r\n",t.x,t.y,t.points);
+		}
 
-		// DWT_Delay_ms(20);
-		uint8_t td = FT6336_ReadReg(0x02);
-		printf("TD_STATUS = %d\r\n", td);
+		DWT_Delay_ms(20);
 	}
 }
 	

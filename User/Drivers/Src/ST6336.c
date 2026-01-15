@@ -232,5 +232,100 @@ uint8_t FT6336_ReadTouch(FT6336_Touch_t *t)
     t->x = ((uint16_t)(t->raw[0] & 0x0F) << 8 ) | t->raw[1];
     t->y = ((uint16_t)(t->raw[2] & 0x0F) << 8 ) | t->raw[3];
 
+    ST7789_DrawPixel(t->x, t->y, 0xFFFF);   // 白点
+
     return 1;
 }
+
+/**
+ * @brief 读取FT6336第一个触摸点（点数 + X/Y）并做最小滤波（Step7）
+ * @param t: 输出结构体
+ * @return 1=有触摸且坐标有效；0=无触摸或本次数据无效/被丢弃
+ *
+ * @note 这是在 FT6336_ReadTouch() 基础上做“最小改动”的增强版：
+ *       - 松手清历史
+ *       - 限范围（越界丢弃）
+ *       - 防跳点（突变过大丢弃）
+ *       - 可选：轻量平滑（更稳，但会略“粘手”）
+ */
+uint8_t FT6336_ReadTouch_Filtered(FT6336_Touch_t *t)
+{
+    // --- 参数检查 ---
+    if(t == 0) return 0;
+
+    // --- 状态历史（用于防跳点/平滑）
+    static uint16_t last_x = 0, last_y = 0;
+    static uint8_t  has_last = 0;
+
+    // 跳点阈值（可调：50~120）
+    const uint16_t JUMP_TH = 80;
+
+    // 是否启用平滑（1=开，0=关）
+    const uint8_t  ENABLE_SMOOTH = 1;
+
+    uint8_t td = 0;
+
+    // 1) 读触摸点数寄存器 0x02(TD_STATUS)
+    FT6336_ReadMulti(0x02, &td, 1);
+    td &= 0x0F; // 若确认低4位是点数就保留；
+    t->points  = td;
+    t->touched = (td > 0) ? 1 : 0;
+
+    if(td == 0)
+    {
+        // 松手：清历史，避免下一次触摸被上次 last_x/last_y 影响
+        has_last = 0;
+
+        t->x = 0;
+        t->y = 0;
+        return 0;
+    }
+
+    // 2) 从0x03连续读6个字节（XH,XL,YH,YL + 其他信息）
+    FT6336_ReadMulti(0x03, t->raw, 6);
+
+    // 3) 解析 X/Y（高4位常是事件/flag，坐标高位在低4位）
+    uint16_t nx = ((uint16_t)(t->raw[0] & 0x0F) << 8) | t->raw[1];
+    uint16_t ny = ((uint16_t)(t->raw[2] & 0x0F) << 8) | t->raw[3];
+
+    // --- Step7-A：限范围（越界丢弃）---
+    if(nx >= LCD_W || ny >= LCD_H)
+    {
+        return 0;
+    }
+
+    // --- Step7-B：防跳点（突变过大丢弃）---
+    if(has_last)
+    {
+        uint16_t dx = (nx > last_x) ? (nx - last_x) : (last_x - nx);
+        uint16_t dy = (ny > last_y) ? (ny - last_y) : (last_y - ny);
+
+        if((uint16_t)(dx + dy) > JUMP_TH)
+        {
+            return 0;
+        }
+
+        // --- Step7-C：可选平滑（更稳，略“粘手”）---
+        if(ENABLE_SMOOTH)
+        {
+            // 3/4旧 + 1/4新（简单 IIR）
+            nx = (uint16_t)((last_x * 3 + nx) / 4);
+            ny = (uint16_t)((last_y * 3 + ny) / 4);
+        }
+    }
+
+    // 更新历史
+    last_x = nx;
+    last_y = ny;
+    has_last = 1;
+
+    // 写回输出
+    t->x = nx;
+    t->y = ny;
+
+    // 可视化验证：你要是想保持“驱动层纯净”，可以用宏包起来
+    ST7789_DrawPixel(t->x, t->y, 0xFFFF);
+
+    return 1;
+}
+
