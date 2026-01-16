@@ -11,5 +11,6 @@
 #include "tft_gpio.h" //TFT GPIO初始化头文件
 #include "uart.h"
 #include "i2c.h"   
-#include "ST6336.h" //触摸头文件     
+#include "ST6336.h" //触摸头文件   
+#include "tp_event.h"
 #endif /* __MAIN_H__ */

@@ -34,3 +34,8 @@
 .\objects\st6336.o: .\User\BSP\Inc\uart.h
 .\objects\st6336.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\st6336.o: .\User\BSP\Inc\dwt_delay.h
+.\objects\st6336.o: .\User\Drivers\Inc\st7789.h
+.\objects\st6336.o: .\User\BSP\Inc\spi.h
+.\objects\st6336.o: .\User\BSP\Inc\tft_gpio.h
+.\objects\st6336.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\st6336.o: .\User\Drivers\Inc\font.h

@@ -25,6 +25,8 @@ typedef struct
 #define  TP_RST_LOW()  do{GPIO_ResetBits(GPIOB,GPIO_Pin_2);}while(0)    //复位引脚低
 #define FT6336_ADDR  0x38                                               // 7位地址
 
+#define JUMP_TH         80        //跳点阈值(可调50~120)
+#define ENABLE_SMOOTH   1   //是否启用平滑(1 = 开，0 = 关)
 /**
  * 函数声明
  */

@@ -43,3 +43,4 @@
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: .\User\BSP\Inc\i2c.h
 .\objects\main.o: .\User\Drivers\Inc\ST6336.h
+.\objects\main.o: .\User\Services\Inc\tp_event.h

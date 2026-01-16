@@ -6,6 +6,11 @@ int main(void)
 {
 	int humidity = 0;
 	int temperature = 0;
+	static TP_DownCtx  g_down_ctx;
+	static TP_DownEvent g_down_evt;
+	static TP_UpCtx   g_up_ctx;
+	static TP_UpEvent g_up_evt;
+
 	FT6336_Touch_t t;							//第1个触摸点
 	SystemInit();									//初始化系统
 	DWT_Delay_Init();							//初始化DWT延时函数
@@ -18,17 +23,18 @@ int main(void)
 	UART1_Init();									//串口初始化
 	I2C1_Init_ForTouch();					//I2C1初始化
 	FT6336_Reset();
-
+	TP_UpInit(&g_up_ctx);
 	
 	while(1)
 	{
 		/*DHT11_Read(&humidity, &temperature); //读取DHT11数据*/
-		if(FT6336_ReadTouch_Filtered(&t))
-		{
-			printf("x = %u y = %u points = %u\r\n",t.x,t.y,t.points);
-		}
+		if (TP_PollDown(&g_down_ctx, &g_down_evt))
+        printf("DOWN\r\n");
 
-		DWT_Delay_ms(20);
+		if (TP_PollUp(&g_up_ctx, &g_up_evt))
+        printf("UP\r\n");
+
+		DWT_Delay_ms(10);
 	}
 }
 	

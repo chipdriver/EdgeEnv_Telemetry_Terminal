@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER, STM32F411xE</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc;.\Lib\Libraries\CMSIS\Include;.\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include;.\User;.\User\App\Inc;.\User\BSP\Inc;.\User\Drivers\Inc</IncludePath>
+              <IncludePath>.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc;.\Lib\Libraries\CMSIS\Include;.\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include;.\User;.\User\App\Inc;.\User\BSP\Inc;.\User\Drivers\Inc;.\User\Services\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -517,6 +517,13 @@
         </Group>
         <Group>
           <GroupName>User_Services</GroupName>
+          <Files>
+            <File>
+              <FileName>tp_event.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\Services\Src\tp_event.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>User_APP</GroupName>
