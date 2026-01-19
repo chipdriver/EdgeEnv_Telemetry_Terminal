@@ -54,4 +54,30 @@ void TP_UpInit(TP_UpCtx *ctx);
 uint8_t TP_PollUp(TP_UpCtx *ctx, TP_UpEvent *out);
 
 
+/* ========= MOVE 事件输出 ========= */
+typedef struct {
+    uint16_t x;     // 当前坐标
+    uint16_t y;
+    int16_t  dx;    // 相对“上一次上报MOVE”的位移
+    int16_t  dy;
+} TP_MoveEvent;
+
+/* MOVE 检测上下文 */
+typedef struct {
+    uint8_t  was_pressed;     // 上一轮是否按下（只有按下状态才可能MOVE）
+    uint16_t last_rep_x;      // 上一次“触发MOVE时”的坐标（rep=reported）
+    uint16_t last_rep_y;
+
+    uint16_t last_x;          // 最近一次有效坐标（可选：调试/备用）
+    uint16_t last_y;
+} TP_MoveCtx;
+
+/* 初始化 */
+void TP_MoveInit(TP_MoveCtx *ctx);
+
+/* 轮询检测：返回1=产生MOVE；0=无MOVE */
+uint8_t TP_PollMove(TP_MoveCtx *ctx, TP_MoveEvent *out);
+
+
+
 #endif  /*__TP_EVENT_H__*/

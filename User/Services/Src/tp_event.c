@@ -77,12 +77,11 @@ uint8_t TP_PollDown(TP_DownCtx *ctx, TP_DownEvent *out)
 //   3 次 ≈ 30ms（更稳）
 #define TP_RELEASE_CONFIRM    2
 
-
 void TP_UpInit(TP_UpCtx *ctx)
 {
     if (!ctx) return;                 // 保护：空指针直接返回
 
-    ctx->was_pressed = 0;             // 初始认为“未按下”
+    ctx->was_pressed = 0;             // 过去是否被按下，初始认为“未按下”
     ctx->release_cnt = 0;             // 松手确认计数清零
     ctx->last_x = 0;                  // 最近坐标清零（可选）
     ctx->last_y = 0;
@@ -121,7 +120,7 @@ uint8_t TP_PollUp(TP_UpCtx *ctx, TP_UpEvent *out)
     if (pressed)                                      // 如果当前确实按下
     {
         ctx->was_pressed = 1;                          // 标记：处于按下状态
-        ctx->release_cnt = 0;                          // 清除“松手确认计数”（因为还在按着）
+        ctx->release_cnt = 0;                          // 清除“松手确认计数”（因为还在按着）  用来统计 连续多少次读到“未按下 pressed=0”，达到阈值后才认为“真的松手”，从而触发 UP。
 
         ctx->last_x = t.x;                             // 记录最近一次有效坐标
         ctx->last_y = t.y;
@@ -156,4 +155,107 @@ uint8_t TP_PollUp(TP_UpCtx *ctx, TP_UpEvent *out)
     }
 
     return 1;                                          // 本轮产生 UP 事件
+}
+
+
+// 你可以调这个参数：位移超过多少像素才认为“有效移动”
+// 轮询周期 10ms 时：
+//   3  比较灵敏
+//   5  更稳、更不抖
+#define TP_MOVE_TH    3
+
+
+// 工具：int16 绝对值（MOVE 判定会用）
+static int16_t TP_i16_abs(int16_t v)
+{
+    return (v < 0) ? (int16_t)(-v) : v;
+}
+
+void TP_MoveInit(TP_MoveCtx *ctx)
+{
+    if (!ctx) return;                 // 保护：空指针直接返回
+
+    ctx->was_pressed = 0;             // 初始认为未按下
+    ctx->last_rep_x  = 0;             // 上次上报MOVE坐标清零
+    ctx->last_rep_y  = 0;
+
+    ctx->last_x = 0;                  // 最近坐标清零（可选）
+    ctx->last_y = 0;
+}
+
+/**
+ * @brief 轮询检测触摸“移动事件”（MOVE）
+ *
+ * @details
+ * 目标：只有当手指在按下状态下移动到“一定距离”，才上报 MOVE，
+ *      以过滤轻微抖动，避免 UI 抖、按钮乱跳。
+ *
+ * 依赖：
+ *   - FT6336_ReadTouch_Filtered(&t)
+ *       返回 1：当前按下且坐标有效
+ *       返回 0：当前无触摸或本次数据无效
+ *
+ * MOVE 触发条件：
+ *   - 必须处于按下状态（pressed=1）
+ *   - 当前坐标相对“上一次上报MOVE的坐标(last_rep)”的位移 >= TP_MOVE_TH
+ *
+ * 输出/返回值：
+ *   - 返回 1：本轮产生 MOVE（out 中带 x/y/dx/dy）
+ *   - 返回 0：本轮无 MOVE（可能没按下，或位移不足阈值）
+ *
+ * 注意：
+ *   - 第一次按下（刚进入按下状态）不会产生 MOVE，只会初始化参考点
+ *   - 松手后会复位状态，下一次按下重新开始
+ */
+uint8_t TP_PollMove(TP_MoveCtx *ctx, TP_MoveEvent *out)
+{
+    if (!ctx) return 0;                               // 保护：ctx为空无法保存状态
+
+    FT6336_Touch_t t;                                 // 临时变量：接收本轮坐标
+    uint8_t pressed = FT6336_ReadTouch_Filtered(&t);  // 读取：1=按下且有效；0=未按下/无效
+
+    if (!pressed)                                     // 如果当前没有按下
+    {
+        ctx->was_pressed = 0;                         // 状态复位：标记为未按下
+        return 0;                                     // 未按下不可能MOVE
+    }
+
+    // 走到这里说明 pressed == 1（当前按下且坐标有效）
+    ctx->last_x = t.x;                                // 记录最近一次有效坐标（可选）
+    ctx->last_y = t.y;
+
+    if (ctx->was_pressed == 0)                        // 如果这是“刚按下后的第一轮”
+    {
+        ctx->was_pressed = 1;                         // 标记进入按下状态
+        ctx->last_rep_x = t.x;                        // 初始化“MOVE参考点”为当前坐标
+        ctx->last_rep_y = t.y;
+        return 0;                                     // 刚按下不报MOVE（应该由DOWN去报）
+    }
+
+    // 走到这里：处于持续按下状态，开始判断是否“有效移动”
+    int16_t dx = (int16_t)t.x - (int16_t)ctx->last_rep_x; // 相对上次MOVE参考点的X位移
+    int16_t dy = (int16_t)t.y - (int16_t)ctx->last_rep_y; // 相对上次MOVE参考点的Y位移
+
+    // 轻量距离判定（曼哈顿距离）：|dx| + |dy|
+    // 优点：计算快，够用；缺点：不是严格欧式距离，但触摸阈值判断足够
+    uint16_t dist = (uint16_t)(TP_i16_abs(dx) + TP_i16_abs(dy));
+
+    if (dist < TP_MOVE_TH)                            // 位移不够：认为是抖动/微动，不上报
+    {
+        return 0;                                     // 无 MOVE
+    }
+
+    // 位移达到阈值：产生 MOVE
+    ctx->last_rep_x = t.x;                            // 更新“MOVE参考点”为当前坐标
+    ctx->last_rep_y = t.y;
+
+    if (out)                                          // 如果需要输出事件
+    {
+        out->x  = t.x;                                // 输出当前坐标
+        out->y  = t.y;
+        out->dx = dx;                                 // 输出位移（相对上一次MOVE）
+        out->dy = dy;
+    }
+
+    return 1;                                         // 本轮产生 MOVE
 }
