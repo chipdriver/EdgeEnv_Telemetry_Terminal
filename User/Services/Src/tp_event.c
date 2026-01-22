@@ -69,14 +69,6 @@ uint8_t TP_PollDown(TP_DownCtx *ctx, TP_DownEvent *out)
     return 0;                                       // 默认情况：本轮没有 DOWN 事件（可能一直按着，也可能一直没按）
 }
 
-
-
-// 你可以调这个参数：连续多少次“未按下”才算真的松手
-// 轮询周期 10ms 时：
-//   2 次 ≈ 20ms（灵敏）
-//   3 次 ≈ 30ms（更稳）
-#define TP_RELEASE_CONFIRM    2
-
 void TP_UpInit(TP_UpCtx *ctx)
 {
     if (!ctx) return;                 // 保护：空指针直接返回
@@ -120,7 +112,7 @@ uint8_t TP_PollUp(TP_UpCtx *ctx, TP_UpEvent *out)
     if (pressed)                                      // 如果当前确实按下
     {
         ctx->was_pressed = 1;                          // 标记：处于按下状态
-        ctx->release_cnt = 0;                          // 清除“松手确认计数”（因为还在按着）  用来统计 连续多少次读到“未按下 pressed=0”，达到阈值后才认为“真的松手”，从而触发 UP。
+        ctx->release_cnt = 0;                          // 清除“松手确认计数”（因为还在按着）
 
         ctx->last_x = t.x;                             // 记录最近一次有效坐标
         ctx->last_y = t.y;
@@ -158,29 +150,36 @@ uint8_t TP_PollUp(TP_UpCtx *ctx, TP_UpEvent *out)
 }
 
 
-// 你可以调这个参数：位移超过多少像素才认为“有效移动”
-// 轮询周期 10ms 时：
-//   3  比较灵敏
-//   5  更稳、更不抖
-#define TP_MOVE_TH    3
-
-
 // 工具：int16 绝对值（MOVE 判定会用）
 static int16_t TP_i16_abs(int16_t v)
 {
     return (v < 0) ? (int16_t)(-v) : v;
 }
 
+/**
+ * @brief 初始化 MOVE 事件检测上下文
+ *
+ * @details
+ * 该函数用于初始化 TP_MoveCtx 结构体中的所有状态变量，
+ * 必须在第一次调用 TP_PollMove() 之前调用一次。
+ *
+ * MOVE 事件属于“持续按下过程中的位移事件”，
+ * 内部依赖历史状态（was_pressed）和参考点（last_rep_x/last_rep_y），
+ * 如果不初始化，会导致第一次 MOVE 判断异常。
+ *
+ * @param ctx MOVE 事件检测上下文指针（需要常驻保存）
+ */
 void TP_MoveInit(TP_MoveCtx *ctx)
 {
-    if (!ctx) return;                 // 保护：空指针直接返回
+    if (!ctx) return;                 // 参数保护：ctx 为空则直接返回，防止空指针访问
 
-    ctx->was_pressed = 0;             // 初始认为未按下
-    ctx->last_rep_x  = 0;             // 上次上报MOVE坐标清零
-    ctx->last_rep_y  = 0;
+    ctx->was_pressed = 0;             // 标记为“上一轮未按下”，为首次按下建立正确初始状态
 
-    ctx->last_x = 0;                  // 最近坐标清零（可选）
-    ctx->last_y = 0;
+    ctx->last_rep_x  = 0;             // 上一次“上报 MOVE”的参考点 X 坐标清零
+    ctx->last_rep_y  = 0;             // 上一次“上报 MOVE”的参考点 Y 坐标清零
+
+    ctx->last_x = 0;                  // 最近一次有效坐标清零（可选，用于记录当前触点位置）
+    ctx->last_y = 0;                  // 最近一次有效坐标清零
 }
 
 /**
@@ -259,3 +258,138 @@ uint8_t TP_PollMove(TP_MoveCtx *ctx, TP_MoveEvent *out)
 
     return 1;                                         // 本轮产生 MOVE
 }
+
+/*================================================================合并DOMW/MOVE/UP========================================================================*/
+
+/*工具：int16绝对值*/
+static int16_t TP_i16_abc(int16_t v)
+{
+    return (v < 0) ? (uint16_t)(-v) : v;
+}
+
+/**
+ * @brief 初始化触摸曾上下文（合并版）
+ * @details 将所有与DOWN/MOVE/UP相关的状态同意放到一个IP_Ctx里，避免多套Ctx之间不同步
+ */
+void TP_Init(TP_Ctx *ctx)
+{
+	if(!ctx) return;
+	
+	ctx->pressed = 0;				//当前是否按下（初始化为未按下）
+	ctx->was_pressed = 0;		//上一轮是否按下（初始化为未按下）
+	ctx->release_cnt = 0;		//松手确认计数清零
+	
+	ctx->start_x = 0;				//DOWN起点清零
+	ctx->start_y = 0;
+	
+	ctx->last_x = 0;				//最近坐标清零
+	ctx->last_y = 0;
+	
+	ctx->last_rep_x = 0;		//MOVE参考点清零
+	ctx->last_rep_y = 0;		
+}
+
+/**
+* @brief 轮询输出触摸事件
+* @details 
+*	输入：底层触摸状态（是否按下 + 坐标）
+*	输出：离散事件（DOWN/MOVE/UP），并携带坐标/位移等信息
+*	
+*	事件判定原则：
+*		- DOWN；上一轮未按下，&& 当前按下
+*		- MOVE；持续按下状态，位移超过阈值 TP_MOVE_TH
+*		- UP  ；上一轮按下 && 当前连续 TP_RELEASE_CONFIRM 轮未按下
+*	
+*	返回值：
+*		-1 ：本轮产生了事件(evt->type != NONE)
+*		-0 ：本轮无事件
+*/
+uint8_t TP_Poll(TP_Ctx *ctx,TP_Event *evt)
+{
+    //参数检查：空指针直接返回
+    if(!ctx || !evt)    return 0;
+
+    // ===== 1) 事件输出结构体先清为 NONE =====
+    evt->type = TP_EVT_NONE;                          // 默认无事件
+    evt->x = 0;                                       // 默认坐标清零（无事件时没意义）
+    evt->y = 0;
+    evt->dx = 0;                                      // 默认位移清零
+    evt->dy = 0;
+
+    // ===== 2) 读取底层触摸（你已有的Filtered函数） =====
+    FT6336_Touch_t t;                                   //临时接收本轮坐标
+    uint8_t pressed = FT6336_ReadTouch_Filtered(&t);    //1=按下且坐标有效；0=未按下/无效
+    ctx->pressed = pressed;                             //保存当前是否按下到上下文
+
+    // ===== 3) 如果当前按下：更新最近坐标，并清松手计数 =====
+    if(pressed)         //当前按下
+    {
+        ctx->last_x = t.x;  //更新最近一次的有效坐标
+        ctx->last_y = t.y;  //更新最近一次的有效坐标
+
+        ctx->release_cnt = 0;   //清楚UP确认计数
+    }
+
+    // ===== 4) 判定 DOWN：0->1 的跳变 =====
+    if((ctx->was_pressed == 0) && (pressed == 1))   //上一轮未按下 && 当前按下
+    {
+        ctx->was_pressed = 1;       //标记进入按下状态
+
+        ctx->start_x = ctx->last_x;  //记录DOWN起点
+        ctx->start_y = ctx->last_y;  //记录DOWN起点
+
+        ctx->last_rep_x = ctx->last_x;  //初始化MOVE参考点（第一次按下时）
+        ctx->last_rep_y = ctx->last_y;  //初始化MOVE参考点（第一次按下时）
+
+        evt->type = TP_EVT_DOWN;        //输出事件类型DOWN
+        evt->x = ctx->last_x;           //输出DOWN坐标
+        evt->y = ctx->last_y;
+        
+        return 1;       //本轮产生事件，直接返回
+    }
+
+    // ===== 5) 持续按下状态：尝试判定 MOVE =====
+    if(pressed && (ctx->pressed == 1))  //当前按下 且 已处于按下周期中
+    {
+        int16_t dx = (int16_t)ctx->last_x - (int16_t)ctx->last_rep_x;   //相对上次MOVE上报点的移动距离
+        int16_t dy = (int16_t)ctx->last_y - (int16_t)ctx->last_rep_y;   //相对上次MOVE上报点的移动距离
+
+        uint16_t dist = (uint16_t)(TP_i16_abs(dx) + TP_i16_abs(dy) );   //曼哈顿距离判定
+
+        if(dist >= TP_MOVE_TH)
+        {
+            ctx->last_rep_x = ctx->last_x;            // 更新MOVE参考点到当前
+            ctx->last_rep_y = ctx->last_y;
+
+            evt->type = TP_EVT_MOVE;                  // 输出事件类型：MOVE
+            evt->x = ctx->last_x;                     // 输出当前坐标
+            evt->y = ctx->last_y;
+            evt->dx = dx;                             // 输出位移（相对上次MOVE）
+            evt->dy = dy;
+            return 1;   //本轮产生事件，直接返回
+        }
+    }
+
+    // ===== 6) 判定 UP：按下周期中，连续N轮未按下 =====
+    if((ctx->was_pressed == 1) && (pressed == 0))
+    {
+        ctx->release_cnt++;                           // 累计连续未按下次数
+
+        if(ctx->release_cnt >= TP_RELEASE_CONFIRM)      // 达到确认阈值：正式UP
+        {
+            ctx->was_pressed = 0;                     // 回到未按下状态
+            ctx->release_cnt = 0;                     // 计数清零
+
+            evt->type = TP_EVT_UP;                    // 输出事件类型：UP
+            evt->x = ctx->last_x;                     // UP时输出最后一次有效坐标
+            evt->y = ctx->last_y;
+            return 1;       //本轮产生事件，直接返回
+        }
+    }
+
+    return 0;   //本轮无事件
+}
+ 
+
+
+

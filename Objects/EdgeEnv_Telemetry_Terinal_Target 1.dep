@@ -578,7 +578,7 @@ I (.\User\Drivers\Inc\font.h)(0x695F596C)
 F (.\User\Drivers\Src\font.c)(0x695F5A3A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Lib\Libraries\CMSIS\Include -I .\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\User -I .\User\App\Inc -I .\User\BSP\Inc -I .\User\Drivers\Inc -I .\User\Services\Inc-D__UVISION_VERSION="534" -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DSTM32F411xE-o .\objects\font.o --omf_browse .\objects\font.crf --depend .\objects\font.d)
 I (.\User\Drivers\Inc\font.h)(0x695F596C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
-F (.\User\Drivers\Src\ST6336.c)(0x6969E2C5)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Lib\Libraries\CMSIS\Include -I .\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\User -I .\User\App\Inc -I .\User\BSP\Inc -I .\User\Drivers\Inc -I .\User\Services\Inc-D__UVISION_VERSION="534" -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DSTM32F411xE-o .\objects\st6336.o --omf_browse .\objects\st6336.crf --depend .\objects\st6336.d)
+F (.\User\Drivers\Src\ST6336.c)(0x696DDD9A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Lib\Libraries\CMSIS\Include -I .\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\User -I .\User\App\Inc -I .\User\BSP\Inc -I .\User\Drivers\Inc -I .\User\Services\Inc-D__UVISION_VERSION="534" -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DSTM32F411xE-o .\objects\st6336.o --omf_browse .\objects\st6336.crf --depend .\objects\st6336.d)
 I (.\User\Drivers\Inc\ST6336.h)(0x6969A560)
 I (.\User\BSP\Inc\i2c.h)(0x6964575D)
 I (.\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6938DFF7)
@@ -618,8 +618,8 @@ I (.\User\BSP\Inc\spi.h)(0x6944B5C1)
 I (.\User\BSP\Inc\tft_gpio.h)(0x6944B4D5)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E3CC2)
 I (.\User\Drivers\Inc\font.h)(0x695F596C)
-F (.\User\Services\Src\tp_event.c)(0x696DC7AA)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Lib\Libraries\CMSIS\Include -I .\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\User -I .\User\App\Inc -I .\User\BSP\Inc -I .\User\Drivers\Inc -I .\User\Services\Inc-D__UVISION_VERSION="534" -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DSTM32F411xE-o .\objects\tp_event.o --omf_browse .\objects\tp_event.crf --depend .\objects\tp_event.d)
-I (.\User\Services\Inc\tp_event.h)(0x696DC7A1)
+F (.\User\Services\Src\tp_event.c)(0x696F2DB8)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Lib\Libraries\CMSIS\Include -I .\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\User -I .\User\App\Inc -I .\User\BSP\Inc -I .\User\Drivers\Inc -I .\User\Services\Inc-D__UVISION_VERSION="534" -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DSTM32F411xE-o .\objects\tp_event.o --omf_browse .\objects\tp_event.crf --depend .\objects\tp_event.d)
+I (.\User\Services\Inc\tp_event.h)(0x696F2750)
 I (.\User\Drivers\Inc\ST6336.h)(0x6969A560)
 I (.\User\BSP\Inc\i2c.h)(0x6964575D)
 I (.\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6938DFF7)
@@ -689,7 +689,7 @@ I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x6938DFFE)
 I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x6938DFFE)
 I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x6938DFFE)
 I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x6938DFFE)
-I (.\User\App\Inc\main.h)(0x6969E401)
+I (.\User\App\Inc\main.h)(0x696F3597)
 I (.\User\Drivers\Inc\dht11_Drivers.h)(0x6944C54B)
 I (.\User\BSP\Inc\dht11_gpio.h)(0x6941098B)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5E8E3CC2)
@@ -704,9 +704,10 @@ I (.\User\BSP\Inc\uart.h)(0x69644B19)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E3CC2)
 I (.\User\BSP\Inc\i2c.h)(0x6964575D)
 I (.\User\Drivers\Inc\ST6336.h)(0x6969A560)
-I (.\User\Services\Inc\tp_event.h)(0x696DC7A1)
-F (.\User\App\Src\main.c)(0x696DC7F1)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Lib\Libraries\CMSIS\Include -I .\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\User -I .\User\App\Inc -I .\User\BSP\Inc -I .\User\Drivers\Inc -I .\User\Services\Inc-D__UVISION_VERSION="534" -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DSTM32F411xE-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (.\User\App\Inc\main.h)(0x6969E401)
+I (.\User\Services\Inc\tp_event.h)(0x696F2750)
+I (.\User\App\Inc\ui.pages.h)(0x697078C7)
+F (.\User\App\Src\main.c)(0x69707DF5)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Lib\Libraries\CMSIS\Include -I .\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\User -I .\User\App\Inc -I .\User\BSP\Inc -I .\User\Drivers\Inc -I .\User\Services\Inc-D__UVISION_VERSION="534" -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DSTM32F411xE-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (.\User\App\Inc\main.h)(0x696F3597)
 I (.\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6938DFF7)
 I (.\Lib\Libraries\CMSIS\Include\core_cm4.h)(0x6938DFFD)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -749,4 +750,41 @@ I (.\User\BSP\Inc\uart.h)(0x69644B19)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E3CC2)
 I (.\User\BSP\Inc\i2c.h)(0x6964575D)
 I (.\User\Drivers\Inc\ST6336.h)(0x6969A560)
-I (.\User\Services\Inc\tp_event.h)(0x696DC7A1)
+I (.\User\Services\Inc\tp_event.h)(0x696F2750)
+I (.\User\App\Inc\ui.pages.h)(0x697078C7)
+F (.\User\App\Src\ui.pages.c)(0x69707C00)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Lib\Libraries\CMSIS\Include -I .\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\User -I .\User\App\Inc -I .\User\BSP\Inc -I .\User\Drivers\Inc -I .\User\Services\Inc-D__UVISION_VERSION="534" -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DSTM32F411xE-o .\objects\ui.pages.o --omf_browse .\objects\ui.pages.crf --depend .\objects\ui.pages.d)
+I (.\User\App\Inc\ui.pages.h)(0x697078C7)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
+I (.\User\Drivers\Inc\st7789.h)(0x695F51FC)
+I (.\User\BSP\Inc\spi.h)(0x6944B5C1)
+I (.\User\BSP\Inc\tft_gpio.h)(0x6944B4D5)
+I (.\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6938DFF7)
+I (.\Lib\Libraries\CMSIS\Include\core_cm4.h)(0x6938DFFD)
+I (.\Lib\Libraries\CMSIS\Include\core_cmInstr.h)(0x6938DFFD)
+I (.\Lib\Libraries\CMSIS\Include\core_cmFunc.h)(0x6938DFFD)
+I (.\Lib\Libraries\CMSIS\Include\core_cmSimd.h)(0x6938DFFD)
+I (.\Lib\Libraries\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6938DFF7)
+I (.\User\stm32f4xx_conf.h)(0x693916FE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x6938DFFE)
+I (.\Lib\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x6938DFFE)
+I (.\User\BSP\Inc\dwt_delay.h)(0x6944C464)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E3CC2)
+I (.\User\Drivers\Inc\font.h)(0x695F596C)

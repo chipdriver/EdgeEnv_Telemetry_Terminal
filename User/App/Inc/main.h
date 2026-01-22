@@ -13,4 +13,5 @@
 #include "i2c.h"   
 #include "ST6336.h" //触摸头文件   
 #include "tp_event.h"
+#include "ui.pages.h"
 #endif /* __MAIN_H__ */

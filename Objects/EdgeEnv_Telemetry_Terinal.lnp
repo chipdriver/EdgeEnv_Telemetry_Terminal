@@ -24,6 +24,7 @@
 ".\objects\tp_event.o"
 ".\objects\stm32f4xx_it.o"
 ".\objects\main.o"
+".\objects\ui.pages.o"
 --library_type=microlib --strict --scatter ".\Objects\EdgeEnv_Telemetry_Terinal.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

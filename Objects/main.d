@@ -44,3 +44,4 @@
 .\objects\main.o: .\User\BSP\Inc\i2c.h
 .\objects\main.o: .\User\Drivers\Inc\ST6336.h
 .\objects\main.o: .\User\Services\Inc\tp_event.h
+.\objects\main.o: .\User\App\Inc\ui.pages.h
